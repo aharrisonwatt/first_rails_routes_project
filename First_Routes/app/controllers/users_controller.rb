@@ -11,7 +11,8 @@ class UsersController < ApplicationController
       render json: user
     else
       render(
-        json: user.errors.full_messages, status: :unprocessable_entity
+        json: user.errors.full_messages,
+        status: :unprocessable_entity
       )
     end
   end
@@ -43,14 +44,13 @@ class UsersController < ApplicationController
     if this_user.delete
       render json: this_user
     else
-      render(
-        json: this_user.errors.full_messages, status: :unprocessable_entity
-      )
+        :unprocessable_entity
+
     end
   end
 
   private
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:username)
   end
 end
